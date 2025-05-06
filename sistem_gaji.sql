@@ -48,3 +48,10 @@ CREATE TABLE management_gaji_gaji (
     total_gaji INT(11),
     FOREIGN KEY (karyawan_id) REFERENCES management_gaji_karyawan(id)
 );
+
+-- Insert Table Jabatan --
+INSERT INTO jabatan (nama_jabatan, gaji_pokok) VALUES
+('Manager', 10000000.00),
+('Supervisor', 7000000.00),
+('Staff', 5000000.00),
+('Intern', 2000000.00);
