@@ -1,5 +1,5 @@
 -- Tabel: jabatan
-CREATE TABLE management_gaji_jabatan (
+CREATE TABLE jabatan (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     nama_jabatan VARCHAR(100),
     gaji_pokok INT(11),
@@ -7,7 +7,7 @@ CREATE TABLE management_gaji_jabatan (
 );
 
 -- Tabel: karyawan
-CREATE TABLE management_gaji_karyawan (
+CREATE TABLE karyawan (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100),
     jenis_kelamin VARCHAR(10),
@@ -20,7 +20,7 @@ CREATE TABLE management_gaji_karyawan (
 );
 
 -- Tabel: lembur
-CREATE TABLE management_gaji_lembur (
+CREATE TABLE lembur (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     karyawan_id INT(11),
     bulan VARCHAR(20),
@@ -32,7 +32,7 @@ CREATE TABLE management_gaji_lembur (
 );
 
 -- Tabel: rating
-CREATE TABLE management_gaji_rating (
+CREATE TABLE rating (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     karyawan_id INT(11),
     bulan VARCHAR(20),
@@ -41,7 +41,7 @@ CREATE TABLE management_gaji_rating (
 );
 
 -- Tabel: gaji
-CREATE TABLE management_gaji_gaji (
+CREATE TABLE gaji (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     karyawan_id INT(11),
     bulan VARCHAR(20),
@@ -53,5 +53,4 @@ CREATE TABLE management_gaji_gaji (
 INSERT INTO jabatan (nama_jabatan, gaji_pokok) VALUES
 ('Manager', 10000000.00),
 ('Supervisor', 7000000.00),
-('Staff', 5000000.00),
-('Intern', 2000000.00);
+('Staff', 5000000.00);
