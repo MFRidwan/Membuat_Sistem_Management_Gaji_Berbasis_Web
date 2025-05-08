@@ -7,8 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jabatan_id = $_POST['jabatan_id'];
     $alamat = $_POST['alamat'];
     $no_hp = $_POST['no_hp'];
+    $tanggal_bergabung = $_POST['tanggal_bergabung']; // Tambahan
     $nilai_rating = $_POST['nilai_rating'];
-    
+
     // Proses upload foto
     $foto = $_FILES['foto']['name'];
     $tmp = $_FILES['foto']['tmp_name'];
@@ -19,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Simpan data karyawan
-    $query = mysqli_query($conn, "INSERT INTO karyawan (nama, jenis_kelamin, jabatan_id, alamat, no_hp, foto) 
-                                  VALUES ('$nama', '$jenis_kelamin', '$jabatan_id', '$alamat', '$no_hp', '$foto')");
+    $query = mysqli_query($conn, "INSERT INTO karyawan (nama, jenis_kelamin, jabatan_id, alamat, no_hp, foto, tanggal_bergabung) 
+                                  VALUES ('$nama', '$jenis_kelamin', '$jabatan_id', '$alamat', '$no_hp', '$foto', '$tanggal_bergabung')");
     if ($query) {
         $karyawan_id = mysqli_insert_id($conn);
         $bulan = date('Y-m');
@@ -83,6 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label class="form-label">No HP</label>
                 <input type="text" name="no_hp" class="form-control" required>
             </div>
+
+            <!-- Tanggal Bergabung -->
+            <div class="mb-3">
+                <label class="form-label">Tanggal Bergabung</label>
+                <input type="date" name="tanggal_bergabung" class="form-control" max="<?= date('Y-m-d') ?>" required>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Foto</label>
                 <input type="file" name="foto" class="form-control" accept="image/*" required>
