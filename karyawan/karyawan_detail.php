@@ -1,7 +1,7 @@
 <?php
-include 'koneksi.php';
-include 'includes/header.php';
-include 'includes/sidebar.php';
+include '../koneksi.php';
+include '../includes/header.php';
+include '../includes/sidebar.php';
 
 $id = $_GET['id'];
 $query = mysqli_query($conn, "SELECT k.*, j.nama_jabatan FROM karyawan k LEFT JOIN jabatan j ON k.jabatan_id = j.id WHERE k.id = $id");
@@ -20,13 +20,21 @@ elseif ($jabatan === 'staff') $badgeClass = 'success';
 elseif ($jabatan === 'supervisor') $badgeClass = 'dark';
 ?>
 
-<div class="container-fluid mt-5">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid mt-5">
     <h2 class="text-center fw-bold mb-4 text-uppercase text-primary">Detail Karyawan</h2>
 
     <div class="card shadow-lg border-0 rounded-4">
         <div class="row g-0 p-4">
             <div class="col-md-4 text-center border-end">
-                <img src="uploads/<?= $data['foto'] ?>" class="img-fluid rounded-3 shadow-sm mb-3" style="max-width: 230px; height: 300px; object-fit: cover;" alt="Foto Karyawan">
+                <img src="../uploads/<?= $data['foto'] ?>" class="img-fluid rounded-3 shadow-sm mb-3" style="max-width: 230px; height: 300px; object-fit: cover;" alt="Foto Karyawan">
                 <div class="mt-2">
                     <strong class="d-block mb-1">Rating:</strong>
                     <?php for ($i = 1; $i <= 5; $i++): ?>
@@ -45,12 +53,14 @@ elseif ($jabatan === 'supervisor') $badgeClass = 'dark';
                 </table>
 
                 <div class="mt-4 ms-md-4">
-                    <a href="karyawan_edit.php?id=<?= $data['id'] ?>" class="btn btn-primary me-2 shadow-sm px-4">Edit</a>
-                    <a href="karyawan.php" class="btn btn-outline-secondary px-4">← Kembali</a>
+                    <a href="../karyawan/karyawan_edit.php?id=<?= $data['id'] ?>" class="btn btn-primary me-2 shadow-sm px-4">Edit</a>
+                    <a href="../karyawan/karyawan.php" class="btn btn-outline-secondary px-4">← Kembali</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</body>
+</html>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

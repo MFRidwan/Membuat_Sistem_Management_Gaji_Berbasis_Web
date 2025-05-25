@@ -1,4 +1,4 @@
-<?php include 'koneksi.php'; ?>
+<?php include '../koneksi.php'; ?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -30,18 +30,17 @@
         }
     </style>
 </head>
-
 <body>
     <div class="d-flex">
-        <?php include 'includes/sidebar.php'; ?>
-        <div class="container py-5">
+        <?php include '../includes/sidebar.php'; ?>
+        <div class="p-4 w-100">
             <div class="card p-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="mb-0">
                         <i class="bi bi-cash-stack text-success me-2"></i>Daftar Tarif Gaji
                     </h4>
-                    <a href="gaji_tambah.php" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-1"></i>Tambah Gaji
+                    <a href="../gaji/gaji_tambah.php" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-1 "></i>Tambah Gaji
                     </a>
                 </div>
 
@@ -73,13 +72,13 @@
                                     <td><?= $data['bulan'] ?></td>
                                     <td class="text-end">Rp <?= number_format($data['total_gaji'], 0, ',', '.') ?></td>
                                     <td class="action-buttons">
-                                        <a href="gaji_edit.php?id=<?= $data['id'] ?>" class="btn btn-warning btn-sm">
+                                        <a href="../gaji/gaji_edit.php?id=<?= $data['id'] ?>" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil-fill"></i> Edit
                                         </a>
-                                        <a href="gaji_detail.php?id=<?= $data['id'] ?>" class="btn btn-info btn-sm text-white">
+                                        <a href="../gaji/gaji_detail.php?id=<?= $data['id'] ?>" class="btn btn-info btn-sm text-white">
                                             <i class="bi bi-eye-fill"></i> Detail
                                         </a>
-                                        <a href="gaji_hapus.php?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                        <a href="../gaji/gaji_hapus.php?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash-fill"></i> Hapus
                                         </a>
                                     </td>

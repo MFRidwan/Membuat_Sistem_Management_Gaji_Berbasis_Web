@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 $id = $_GET['id'];
 $query = mysqli_query($conn, "SELECT * FROM lembur WHERE id = $id");
@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
 </head>
 <body>
 <div class="d-flex">
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-11">
@@ -69,7 +69,7 @@ if (isset($_POST['update'])) {
                                 <input type="number" name="jumlah_jam" value="<?= $data['jumlah_jam']; ?>" class="form-control" required>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <a href="lembur.php" class="btn btn-secondary">
+                                <a href="../lembur/lembur.php" class="btn btn-secondary">
                                     <i class="bi bi-arrow-left-circle"></i> Kembali
                                 </a>
                                 <button type="submit" name="update" class="btn btn-success">

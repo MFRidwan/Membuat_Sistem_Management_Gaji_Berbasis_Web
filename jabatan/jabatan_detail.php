@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -24,7 +24,7 @@ $row = mysqli_fetch_assoc($query);
 <body>
     <div class="d-flex">
         <!-- Sidebar -->
-        <?php include 'includes/sidebar.php'; ?>
+        <?php include '../includes/sidebar.php'; ?>
 
         <!-- Konten Utama -->
         <div class="p-4 w-100">
@@ -54,7 +54,7 @@ $row = mysqli_fetch_assoc($query);
                     </div>
                 <?php endif; ?>
 
-                <a href="jabatan.php" class="btn btn-outline-secondary mt-4">
+                <a href="../jabatan/jabatan.php" class="btn btn-outline-secondary mt-4">
                     <i class="bi bi-arrow-left"></i> Kembali
                 </a>
             </div>

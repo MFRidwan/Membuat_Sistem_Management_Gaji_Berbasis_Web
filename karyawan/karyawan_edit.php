@@ -1,8 +1,8 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 if (!isset($_GET['id'])) {
-    header("Location: karyawan.php");
+    header("Location: ../karyawan/karyawan.php");
     exit;
 }
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         WHERE id='$id'");
 
     if ($update) {
-        header("Location: karyawan.php");
+        header("Location: ../karyawan/karyawan.php");
         exit;
     } else {
         echo "Gagal mengupdate data.";
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <div class="d-flex">
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     <div class="p-4 w-100">
         <h3>Edit Data Karyawan</h3>
         <form method="post" enctype="multipart/form-data">
@@ -110,12 +110,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label class="form-label">Foto (kosongkan jika tidak ingin mengganti)</label>
                 <input type="file" name="foto" class="form-control" accept="image/*">
                 <div class="mt-2">
-                    <img src="uploads/<?= $data['foto'] ?>" width="100" alt="Foto Karyawan">
+                    <img src="../uploads/<?= $data['foto'] ?>" width="100" alt="Foto Karyawan">
                 </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="karyawan.php" class="btn btn-secondary">Kembali</a>
+            <a href="../karyawan/karyawan.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </div>

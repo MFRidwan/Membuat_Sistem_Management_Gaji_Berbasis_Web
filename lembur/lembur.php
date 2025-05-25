@@ -1,4 +1,4 @@
-<?php include 'koneksi.php'; ?>
+<?php include '../koneksi.php'; ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -25,12 +25,12 @@
 </head>
 <body>
 <div class="d-flex">
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     <div class="p-4 w-100">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-success"><i class="bi bi-clock-history me-2"></i>Daftar Tarif Lembur</h3>
-            <a href="lembur_tambah.php" class="btn btn-primary btn-icon">
-                <i class="bi bi-plus-circle-fill"></i> Tambah Tarif
+            <a href="../lembur/lembur_tambah.php" class="btn btn-primary btn-icon">
+                <i class="bi bi-plus-circle me-1"></i> Tambah Tarif
             </a>
         </div>
         <div class="table-responsive shadow rounded bg-white p-3">
@@ -61,13 +61,13 @@
                             <td>' . $row['jumlah_jam'] . ' jam</td>
                             <td>Rp ' . number_format($total, 0, ',', '.') . '</td>
                             <td class="text-center">
-                                <a href="lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning btn-icon me-1">
+                                <a href="../lembur/lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning btn-icon me-1">
                                     <i class="bi bi-pencil-fill"></i> Edit
                                 </a>
-                                <a href="lembur_detail.php?id=' . $row['id'] . '" class="btn btn-sm btn-info btn-icon text-white me-1">
+                                <a href="../lembur/lembur_detail.php?id=' . $row['id'] . '" class="btn btn-sm btn-info btn-icon text-white me-1">
                                     <i class="bi bi-eye-fill"></i> Detail
                                 </a>
-                                <a href="lembur_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger btn-icon" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">
+                                <a href="../lembur/lembur_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger btn-icon" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">
                                     <i class="bi bi-trash-fill"></i> Hapus
                                 </a>
                             </td>

@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 $id = $_GET['id'];
 $data = mysqli_fetch_assoc(mysqli_query($conn, "
@@ -32,12 +32,12 @@ $total = $tarif * $jam;
 </head>
 <body>
 <div class="d-flex">
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="d-flex align-items-center mb-3">
-                    <a href="lembur.php" class="btn btn-outline-secondary me-2">
+                    <a href="../lembur/lembur.php" class="btn btn-outline-secondary me-2">
                         <i class="bi bi-arrow-left-circle"></i> Kembali
                     </a>
                     <h4 class="mb-0">Detail Tarif Lembur</h4>

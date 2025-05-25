@@ -1,4 +1,5 @@
-<?php include 'koneksi.php'; ?>
+<?php include '../koneksi.php'; ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -69,19 +70,22 @@
             font-size: 14px;
             padding: 4px 12px;
         }
+        .teks {
+            color: #ffff;
+        }
     </style>
 </head>
 <body>
 <div class="d-flex">
-    <?php include 'includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
     <div class="p-4 w-100">
         <div class="text-center mb-4">
             <h3 class="judul-dashboard mb-2 text-primary fw-bold">
                 <i class="bi bi-person-badge-fill me-2"></i> Daftar Karyawan
             </h3>
             <p class="subjudul-dashboard">Lihat informasi karyawan terbaru dengan mudah dan cepat</p>
-            <a href="karyawan_tambah.php" class="btn btn-tambah mt-2">
-                <i class="bi bi-plus-circle me-1"></i> Tambah Karyawan
+            <a href="../karyawan/karyawan_tambah.php" class="btn btn-tambah mt-2 teks">
+                <i class="bi bi-plus-circle me-1 teks"></i> <span class="teks">Tambah Karyawan</span>
             </a>
         </div>
 
@@ -111,7 +115,7 @@
                 echo '
                 <div class="col">
                     <div class="card kartu-karyawan shadow-sm h-100">
-                        <img src="uploads/' . $row['foto'] . '" class="foto-karyawan card-img-top" alt="Foto">
+                        <img src="../uploads/' . $row['foto'] . '" class="foto-karyawan card-img-top" alt="Foto">
                         <div class="card-body text-center">
                             <h5 class="card-title mb-1">' . $row['nama'] . '</h5>
                             <div class="text-warning mb-1">Rating: ' . $bintang . '</div>

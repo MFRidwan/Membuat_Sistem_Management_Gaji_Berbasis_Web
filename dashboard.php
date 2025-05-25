@@ -1,4 +1,14 @@
-<?php include 'koneksi.php'; ?>
+<?php 
+include 'koneksi.php';
+include 'includes/header.php'; 
+?>
+<?php
+// Statistik data
+$total_karyawan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM karyawan"))['total'];
+$total_jabatan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM jabatan"))['total'];
+$rata_rating = mysqli_fetch_assoc(mysqli_query($conn, "SELECT AVG(nilai_rating) AS rata FROM rating"))['rata'];
+$jumlah_manager = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS total FROM karyawan k JOIN jabatan j ON k.jabatan_id = j.id WHERE j.nama_jabatan = 'Manager'"))['total'];
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -74,20 +84,61 @@
 <div class="d-flex">
     <?php include 'includes/sidebar.php'; ?>
     <div class="p-4 w-100">
-        <div class="text-center mb-5">
+        <div class="text-center mb-4">
             <h1 class="judul-dashboard mb-2">
-                <i class="bi bi-speedometer2 me-2"></i>Selamat Datang di <span class="fw-bold">Sistem Manajemen Gaji</span>
+                <i class="bi bi-speedometer2 me-2"></i>Selamat Datang di <span class="fw-bold">PT Sinergi Digital Media</span>
             </h1>
             <p class="subjudul-dashboard">Lihat informasi karyawan terbaru dengan mudah dan cepat</p>
             <hr class="custom-hr">
         </div>
 
+        <!-- Statistik Ringkas -->
+        <div class="row text-center mb-5">
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-people-fill text-primary fs-2 mb-2"></i>
+                        <h6 class="mb-1">Total Karyawan</h6>
+                        <h4><?= $total_karyawan ?></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-briefcase-fill text-success fs-2 mb-2"></i>
+                        <h6 class="mb-1">Total Jabatan</h6>
+                        <h4><?= $total_jabatan ?></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-star-fill text-warning fs-2 mb-2"></i>
+                        <h6 class="mb-1">Rata-rata Rating</h6>
+                        <h4><?= number_format($rata_rating ?? 0, 1) ?> ⭐</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-person-badge-fill text-info fs-2 mb-2"></i>
+                        <h6 class="mb-1">Jumlah Manager</h6>
+                        <h4><?= $jumlah_manager ?></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu Karyawan -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             <?php
             $query = mysqli_query($conn, "SELECT karyawan.*, jabatan.nama_jabatan 
                                           FROM karyawan 
                                           JOIN jabatan ON karyawan.jabatan_id = jabatan.id 
-                                          ORDER BY karyawan.id DESC LIMIT 8");
+                                          ORDER BY karyawan.id DESC LIMIT 100");
 
             $bulan_ini = date('Y-m');
 
@@ -118,7 +169,7 @@
                             <h5 class="card-title mb-1">' . $row['nama'] . '</h5>
                             <div class="text-warning mb-1">Rating: ' . $bintang . '</div>
                             <span class="badge bg-' . $badge_class . ' badge-role mb-2">' . $row['nama_jabatan'] . '</span><br>
-                            <a href="karyawan_detail.php?id=' . $id_karyawan . '" class="btn btn-outline-primary btn-sm btn-detail">
+                            <a href="../dashboard_detail.php?id=' . $id_karyawan . '" class="btn btn-outline-primary btn-sm btn-detail">
                                 <i class="bi bi-eye"></i> Lihat Detail
                             </a>
                         </div>
